@@ -3,12 +3,30 @@
 
 
 
-arr =[1, 23, 12, 9, 30, 2, 50]
-k =3
+
 
 
 #bad n*log(n)
-arr.sort(reverse = True)
-print(arr)
-for i in range(k):
-    print(arr[i], end=" ")
+# arr.sort(reverse = True)
+# print(arr)
+# for i in range(k):
+#     print(arr[i], end=" ")
+
+
+def klargest(arr,k):
+    n = len(arr)
+
+    for i in range(n):
+        for j in range(n-i-1):
+            if(arr[j] > arr[j+1]):
+                arr[j],arr[j+1] = arr[j+1],arr[j]
+
+    res = arr[-k:]
+    print(res)
+    
+
+
+
+arr =[1, 23, 12, 9, 30, 2, 50]
+k =3
+klargest(arr,k)
