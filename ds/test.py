@@ -1,23 +1,42 @@
-def bubbleSort(arr):
-    n = len(arr)
+# Python program that returns true if there is
+# a Pythagorean Triplet in a given array.
  
-    # Traverse through all array elements
+# Returns true if there is Pythagorean
+# triplet in ar[0..n-1]
+def isTriplet(ar, n):
+    # Square all the elements
     for i in range(n):
+        ar[i] = ar[i] * ar[i]
  
-        # Last i elements are already in place
-        for j in range(0, n-i-1):
+    # sort array elements
+    ar.sort()
  
-            # traverse the array from 0 to n-i-1
-            # Swap if the element found is greater
-            # than the next element
-            if arr[j] > arr[j+1] :
-                arr[j], arr[j+1] = arr[j+1], arr[j]
+    # fix one element
+    # and find other two
+    # i goes from n - 1 to 2
+    for i in range(n-1, 1, -1):
+        # start two index variables from
+        # two corners of the array and
+        # move them toward each other
+        j = 0
+        k = i - 1
+        while (j < k):
+            # A triplet found
+            if (ar[j] + ar[k] == ar[i]):
+                return True
+            else:
+                if (ar[j] + ar[k] < ar[i]):
+                    j = j + 1
+                else:
+                    k = k - 1
+    # If we reach here, then no triplet found
+    return False
  
-# Driver code to test above
-arr = [64, 34, 25, 12, 22, 11, 90]
+# Driver program to test above function */
+ar = [3, 1, 4, 6, 5]
+ar_size = len(ar)
+if(isTriplet(ar, ar_size)):
+    print("Yes")
+else:
+    print("No")
  
-bubbleSort(arr)
- 
-print ("Sorted array is:")
-for i in range(len(arr)):
-    print ("%d" %arr[i]),
