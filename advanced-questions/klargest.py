@@ -5,8 +5,10 @@
 
 arr =[1, 23, 12, 9, 30, 2, 50]
 k =3
-arr.sort(reverse = True)
 
+
+#bad n*log(n)
+arr.sort(reverse = True)
 print(arr)
 for i in range(k):
     print(arr[i], end=" ")
